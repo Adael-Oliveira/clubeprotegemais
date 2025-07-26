@@ -94,19 +94,7 @@ const partnersData = [
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.200184496035!2d-43.93510098456086!3d-19.91605394351988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699dd5a454d4d%3A0x4a75cf31f6184589!2sRua%20Pernambuco%2C%201200%2C%20Belo%20Horizonte%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1620000000004!5m2!1spt-BR!2sbr',
         featured: false,
     }
-        {
-        id: 8,
-        name: 'Nicped Viagens e Turismo',
-        segment: 'Viagem e Turismo',
-        description: 'Passagem Aérea, Cruzeiros, Pacotes de Viagens para os destinos mais incríveis do Brasil e do Mundo.',
-        discount: '10% para Associados ProtegeMais',
-        logo: 'logoNicped.png',
-        phone: '19920069671',
-        address: 'Av. Affonso Pansan, nº 175, Vila Bertini/Americana – SP/ CEP 13.473-620',
-        city: 'Americana',
-        mapEmbedUrl: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.0321524627584!2d-47.299064927488594!3d-22.72704628588198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89a085d0b6623%3A0xb44a064ff7a95b3f!2sAv.%20Afonso%20Pansan%2C%20175%20-%20Vila%20Bertini%2C%20Americana%20-%20SP%2C%2013473-620!5e0!3m2!1spt-BR!2sbr!4v1753491828711!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
-        featured: false,
-    }
+
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
