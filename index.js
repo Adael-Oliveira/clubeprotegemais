@@ -1,16 +1,16 @@
 const partnersData = [
-    {
+{
         id: 1,
-        name: 'Sabor Divino',
-        segment: 'Restaurantes',
-        description: 'Cozinha contemporânea com um toque brasileiro. Perfeito para um jantar especial ou almoço de negócios.',
-        discount: '20% de desconto',
+        name: 'Nicped Viagens e Turismo',
+        segment: 'Viagem e Turismo',
+        description: 'Passagem Aérea, Cruzeiros, Pacotes de Viagens para os destinos mais incríveis do Brasil e do Mundo.',
+        discount: '10% para Associados ProtegeMais',
         logo: 'partner-logo-1.png',
-        banner: 'banner1.png',
-        phone: '11987654321',
-        address: 'Rua das Flores, 123, São Paulo, SP',
-        city: 'São Paulo',
-        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.106692854933!2d-46.65657158448384!3d-23.56409456754093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1619620864380!5m2!1spt-BR!2sbr',
+        banner: 'logoNicped.png',
+        phone: '19920069671',
+        address: 'Av. Affonso Pansan, nº 175, Vila Bertini/Americana – SP/ CEP 13.473-620',
+        city: 'Americana',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.0321524627584!2d-47.299064927488594!3d-22.72704628588198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89a085d0b6623%3A0xb44a064ff7a95b3f!2sAv.%20Afonso%20Pansan%2C%20175%20-%20Vila%20Bertini%2C%20Americana%20-%20SP%2C%2013473-620!5e0!3m2!1spt-BR!2sbr!4v1753491828711!5m2!1spt-BR!2sbr',
         featured: true,
     },
     {
