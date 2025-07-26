@@ -5,7 +5,7 @@ const partnersData = [
         segment: 'Viagem e Turismo',
         description: 'Passagem Aérea, Cruzeiros, Pacotes de Viagens para os destinos mais incríveis do Brasil e do Mundo.',
         discount: '10% para Associados ProtegeMais',
-        logo: 'imagens/Nicped Viagens e Turismo/logoNicped.jpg',
+        logo: 'imagens/Nicped Viagens e Turismo/logoNicped.jpeg',
         banner: 'imagens/Nicped Viagens e Turismo/capaNicped.png',
         phone: '19920069671',
         address: 'Av. Affonso Pansan, nº 175, Vila Bertini/Americana – SP/ CEP 13.473-620',
