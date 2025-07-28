@@ -24,7 +24,7 @@ const partnersData = [
         phone: '18981167681',
         address: 'R. Itália - Jd. Paulistano, Americana - SP',
         city: 'Americana - SP',
-        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!4v1753742499129!6m8!1m7!1sz3FSHqhNkU3K1raQ_opALQ!2m2!1d-22.72476846550204!2d-47.33417631745849!3f237.1431974763969!4f0.9825604852318008!5f2.2352371813226704" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.0910778763573!2d-47.3342872!3d-22.724855899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89bb3ac0c4d87%3A0x4da0bbb69bb3b68d!2sR.%20It%C3%A1lia%2C%20351%20-%20Jardim%20Paulistano%2C%20Americana%20-%20SP%2C%2013471-550!5e0!3m2!1spt-BR!2sbr!4v1753745559290!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
         featured: true,
     },
     {
