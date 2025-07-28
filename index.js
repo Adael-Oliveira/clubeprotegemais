@@ -22,7 +22,7 @@ const partnersData = [
         logo: 'imagens/DevPage/logodevpage.png',
         banner: 'imagens/DevPage/bannerdevpage.png',
         phone: '18981167681',
-        address: 'Avenida das Américas, 456, Rio de Janeiro, RJ',
+        address: 'R. Itália - Jd. Paulistano, Americana - SP',
         city: 'Americana - SP',
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!4v1753742499129!6m8!1m7!1sz3FSHqhNkU3K1raQ_opALQ!2m2!1d-22.72476846550204!2d-47.33417631745849!3f237.1431974763969!4f0.9825604852318008!5f2.2352371813226704" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
         featured: true,
