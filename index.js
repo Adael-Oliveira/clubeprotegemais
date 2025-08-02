@@ -26,6 +26,7 @@ const partnersData = [
         city: 'Americana - SP',
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.0910778763573!2d-47.3342872!3d-22.724855899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89bb3ac0c4d87%3A0x4da0bbb69bb3b68d!2sR.%20It%C3%A1lia%2C%20351%20-%20Jardim%20Paulistano%2C%20Americana%20-%20SP%2C%2013471-550!5e0!3m2!1spt-BR!2sbr!4v1753745559290!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
         featured: true,
+        instagram: 'https://www.instagram.com/devpage.studio',
     },
     {
         id: 3,
@@ -245,6 +246,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const whatsappButton = document.getElementById('modal-whatsapp-button');
         whatsappButton.href = `https://wa.me/55${partner.phone}`;
+
+    const socialContainer = document.getElementById('modal-social');
+    socialContainer.innerHTML = ''; // Limpa antes de inserir
+
+    if (partner.instagram) {
+        const instaLink = document.createElement('a');
+        instaLink.href = partner.instagram;
+        instaLink.target = '_blank';
+        instaLink.innerHTML = '<img src="imagens/icons/instagram.svg" alt="Instagram" width="24">';
+        socialContainer.appendChild(instaLink);
+    }
+
+    if (partner.facebook) {
+        const fbLink = document.createElement('a');
+        fbLink.href = partner.facebook;
+        fbLink.target = '_blank';
+        fbLink.innerHTML = '<img src="imagens/icons/facebook.svg" alt="Facebook" width="24">';
+        socialContainer.appendChild(fbLink);
+    }
+
         
         modal.classList.add('show');
     };
