@@ -93,6 +93,19 @@ const partnersData = [
         city: 'Piracicaba - SP
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5938107199427!2d-47.67618972545489!3d-22.7433341320484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c6312646da145f%3A0xb758779bfba3cf8f!2sR.%20Urb%C3%A2no%20Gobete%20-%20Piracicaba%2C%20SP%2C%2013402-292!5e0!3m2!1spt-BR!2sbr!4v1754145331172!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
         featured: false,
+    },
+        {
+        id: 8,
+        name: 'Javé jirê • Lava Jato',
+        segment: 'Estética Automotiva',
+        description: 'Guincho 24h - Troca de Pneu = Patins - Aulixio Pane Seca',
+        discount: '10% nos serviços',
+        logo: 'logoJave.png',
+        phone: '19997981020',
+        address: 'R. Luxemburgo, 200 - Vila Santa Maria, Americana - SP, 13471-780',
+        city: 'Americana - SP
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9756657699436!2d-47.34872122545539!3d-22.72914583154492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89bbb88063b77%3A0xb1f3d2aa440cf222!2sR.%20Luxemburgo%2C%20200%20-%20Vila%20Santa%20Maria%2C%20Americana%20-%20SP%2C%2013471-780!5e0!3m2!1spt-BR!2sbr!4v1754146062507!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+        featured: false,
     }
 
 ];
