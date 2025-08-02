@@ -258,7 +258,7 @@ if (partner.instagram) {
     instaLink.target = '_blank';
     instaLink.rel = 'noopener noreferrer';
     instaLink.style.marginRight = '10px';
-    instaLink.innerHTML = '<img src="imagens/icons/instagram.svg" alt="Instagram" width="24" height="24">';
+    instaLink.innerHTML = '<img src="imagens/icons/Instagram_icon.png" alt="Instagram" width="24" height="24">';
     socialContainer.appendChild(instaLink);
 }
 
