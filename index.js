@@ -30,7 +30,7 @@ const partnersData = [
     {
         id: 3,
         name: 'Programa TopRebolças',
-        segment: 'Comunição & Mídia',
+        segment: 'Comunicação & Mídia',
         description: 'Planos de Anúncios em Portal de Notícias e Programas de Rádio',
         discount: '10% nos Planos de Anúncios',
         logo: 'imagens/toprebolcas/logotoprebolcas.png',
