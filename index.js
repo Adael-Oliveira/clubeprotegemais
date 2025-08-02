@@ -107,20 +107,20 @@ const partnersData = [
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9756657699436!2d-47.34872122545539!3d-22.72914583154492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89bbb88063b77%3A0xb1f3d2aa440cf222!2sR.%20Luxemburgo%2C%20200%20-%20Vila%20Santa%20Maria%2C%20Americana%20-%20SP%2C%2013471-780!5e0!3m2!1spt-BR!2sbr!4v1754146062507!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
         featured: false,
     },
-        
-        id: 9,
-        name: 'MusicalTeclados - Assistência Técnica',
-        segment: 'Assistência Ténica,
-        description: 'Assistência Técnica em Teclados e Pianos Digitais de todas marcas e modelos.',
-        discount: '10% nos serviços',
-        logo: 'imagens/MusicalTeclados/logoMusical.png',
-        phone: '19920014106',
-        address: 'Av. da Saudade, 225 - Vila Cordenonsi, Americana - SP, 13472-520',
-        city: 'Americana - SP',
-        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.859548519968!2d-47.32602929999999!3d-22.7334612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89904d8c36dcb%3A0x1fb893a3ab151ffb!2sMusical%20Teclados%20-%20Assist%C3%AAncia%20T%C3%A9cnica!5e0!3m2!1spt-BR!2sbr!4v1754157828025!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
-        featured: false,
-        instagram: 'https://www.instagram.com/musicalteclados',
-    }
+{
+    id: 9,
+    name: 'MusicalTeclados - Assistência Técnica',
+    segment: 'Assistência Técnica',
+    description: 'Assistência Técnica em Teclados e Pianos Digitais de todas marcas e modelos.',
+    discount: '10% nos serviços',
+    logo: 'imagens/MusicalTeclados/logoMusical.png',
+    phone: '19920014106',
+    address: 'Av. da Saudade, 225 - Vila Cordenonsi, Americana - SP, 13472-520',
+    city: 'Americana - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.859548519968!2d-47.32602929999999!3d-22.7334612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89904d8c36dcb%3A0x1fb893a3ab151ffb!2sMusical%20Teclados%20-%20Assist%C3%AAncia%20T%C3%A9cnica!5e0!3m2!1spt-BR!2sbr!5m2!1spt-BR!2sbr',
+    featured: false,
+    instagram: 'https://www.instagram.com/musicalteclados',
+}
 
 ];
 
