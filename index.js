@@ -247,25 +247,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const whatsappButton = document.getElementById('modal-whatsapp-button');
         whatsappButton.href = `https://wa.me/55${partner.phone}`;
 
-    const socialContainer = document.getElementById('modal-social');
-    socialContainer.innerHTML = ''; // Limpa antes de inserir
+    // Zera o conteúdo anterior
+const socialContainer = document.getElementById('modal-social');
+socialContainer.innerHTML = '';
 
-    if (partner.instagram) {
-        const instaLink = document.createElement('a');
-        instaLink.href = partner.instagram;
-        instaLink.target = '_blank';
-        instaLink.innerHTML = '<img src="imagens/icons/instagram.svg" alt="Instagram" width="24">';
-        socialContainer.appendChild(instaLink);
-    }
+// Cria e adiciona o link do Instagram, se existir
+if (partner.instagram) {
+    const instaLink = document.createElement('a');
+    instaLink.href = partner.instagram;
+    instaLink.target = '_blank';
+    instaLink.rel = 'noopener noreferrer';
+    instaLink.style.marginRight = '10px';
+    instaLink.innerHTML = '<img src="imagens/icons/instagram.svg" alt="Instagram" width="24" height="24">';
+    socialContainer.appendChild(instaLink);
+}
 
-    if (partner.facebook) {
-        const fbLink = document.createElement('a');
-        fbLink.href = partner.facebook;
-        fbLink.target = '_blank';
-        fbLink.innerHTML = '<img src="imagens/icons/facebook.svg" alt="Facebook" width="24">';
-        socialContainer.appendChild(fbLink);
-    }
-
+// Cria e adiciona o link do Facebook, se existir
+if (partner.facebook) {
+    const fbLink = document.createElement('a');
+    fbLink.href = partner.facebook;
+    fbLink.target = '_blank';
+    fbLink.rel = 'noopener noreferrer';
+    fbLink.innerHTML = '<img src="imagens/icons/facebook.svg" alt="Facebook" width="24" height="24">';
+    socialContainer.appendChild(fbLink);
+}
         
         modal.classList.add('show');
     };
