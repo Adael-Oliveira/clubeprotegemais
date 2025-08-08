@@ -120,6 +120,20 @@ const partnersData = [
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.859548519968!2d-47.32602929999999!3d-22.7334612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89904d8c36dcb%3A0x1fb893a3ab151ffb!2sMusical%20Teclados%20-%20Assist%C3%AAncia%20T%C3%A9cnica!5e0!3m2!1spt-BR!2sbr!5m2!1spt-BR!2sbr',
     featured: false,
     instagram: 'https://www.instagram.com/musicalteclados',
+},
+        {
+    id: 10,
+    name: 'Sopro Limpo - Estética Automotiva',
+    segment: 'Estética Automotiva',
+    description: 'Sopro Limpo – Especialistas em estética automotiva! Funilaria, pintura, martelinho de ouro, polimento, higienização de bancos e vitrificação para deixar seu carro impecável, por dentro e por fora.',
+    discount: '5% nos serviços',
+    logo: 'imagens/SoproLimpo/logoSoproLimpo.png',
+    phone: '19922250828',
+    address: 'R. Jaír Formigari, 410 - Jardim Santa Fe, Limeira - SP, 13482-364',
+    city: 'Limeira - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.333151787291!2d-47.421087!3d-22.566639799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c880684142a033%3A0x6528f3353f908ff7!2sR.%20Ja%C3%ADr%20Formigari%2C%20410%20-%20Jardim%20Santa%20Fe%2C%20Limeira%20-%20SP%2C%2013482-364!5e0!3m2!1spt-BR!2sbr!4v1754686463325!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/soprolimpo/',
 }
 
 ];
