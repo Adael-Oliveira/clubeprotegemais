@@ -323,3 +323,19 @@ if (partner.facebook) {
     renderFilters();
     filterAndRender();
 });
+
+ const video = document.getElementById('videoIntro');
+    const intro = document.getElementById('intro');
+    const site = document.getElementById('site');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function fecharIntro() {
+        intro.style.opacity = "0";
+        setTimeout(() => {
+            intro.style.display = "none";
+            site.style.display = "block";
+        }, 1000);
+    }
+
+    video.onended = fecharIntro;
+    closeBtn.onclick = fecharIntro;
