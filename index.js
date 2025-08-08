@@ -324,29 +324,23 @@ if (partner.facebook) {
     filterAndRender();
 });
 
- const video = document.getElementById('videoIntro');
-    const intro = document.getElementById('intro');
-    const site = document.getElementById('site');
-    const closeBtn = document.getElementById('closeBtn');
-
-    function fecharIntro() {
-        intro.style.opacity = "0";
-        setTimeout(() => {
-            intro.style.display = "none";
-            site.style.display = "block";
-        }, 1000);
-    }
-
-    video.onended = fecharIntro;
-    closeBtn.onclick = fecharIntro;
-const videoIntro = document.getElementById('videoIntro');
+ const videoIntro = document.getElementById('videoIntro');
+const intro = document.getElementById('intro');
+const closeBtn = document.getElementById('closeBtn');
 const audioBtn = document.getElementById('audioBtn');
 
+// Fecha vídeo e para áudio + vídeo
+closeBtn.addEventListener('click', () => {
+    videoIntro.pause();
+    videoIntro.currentTime = 0;
+    videoIntro.muted = true; // já deixa mudo
+    intro.style.display = 'none';
+});
+
+// Ativa o áudio e esconde o botão
 audioBtn.addEventListener('click', () => {
-    // Desativa o modo mudo
     videoIntro.muted = false;
-    // Garante que o vídeo continue tocando
     videoIntro.play();
-    // Esconde o botão, afinal, já liberou o áudio
     audioBtn.style.display = 'none';
 });
+
