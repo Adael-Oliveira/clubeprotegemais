@@ -339,3 +339,14 @@ if (partner.facebook) {
 
     video.onended = fecharIntro;
     closeBtn.onclick = fecharIntro;
+const videoIntro = document.getElementById('videoIntro');
+const audioBtn = document.getElementById('audioBtn');
+
+audioBtn.addEventListener('click', () => {
+    // Desativa o modo mudo
+    videoIntro.muted = false;
+    // Garante que o vídeo continue tocando
+    videoIntro.play();
+    // Esconde o botão, afinal, já liberou o áudio
+    audioBtn.style.display = 'none';
+});
