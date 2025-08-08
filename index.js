@@ -323,24 +323,3 @@ if (partner.facebook) {
     renderFilters();
     filterAndRender();
 });
-
- const videoIntro = document.getElementById('videoIntro');
-const intro = document.getElementById('intro');
-const closeBtn = document.getElementById('closeBtn');
-const audioBtn = document.getElementById('audioBtn');
-
-// Fecha vídeo e para áudio + vídeo
-closeBtn.addEventListener('click', () => {
-    videoIntro.pause();
-    videoIntro.currentTime = 0;
-    videoIntro.muted = true; // já deixa mudo
-    intro.style.display = 'none';
-});
-
-// Ativa o áudio e esconde o botão
-audioBtn.addEventListener('click', () => {
-    videoIntro.muted = false;
-    videoIntro.play();
-    audioBtn.style.display = 'none';
-});
-
