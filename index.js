@@ -134,6 +134,20 @@ const partnersData = [
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.333151787291!2d-47.421087!3d-22.566639799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c880684142a033%3A0x6528f3353f908ff7!2sR.%20Ja%C3%ADr%20Formigari%2C%20410%20-%20Jardim%20Santa%20Fe%2C%20Limeira%20-%20SP%2C%2013482-364!5e0!3m2!1spt-BR!2sbr!4v1754686463325!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     featured: false,
     instagram: 'https://www.instagram.com/soprolimpo/',
+},
+                {
+    id: 11,
+    name: 'Caprilab - Exames Laboratoriais com Precisão e Qualidade',
+    segment: 'Laboratório Clínico',
+    description: 'Somos um laboratório de análise clínicas que usa da tecnologia em favor da vida! Estamos localizados em Santa Barbara D’Oeste e Americana com laboratórios de alta qualidade oferecendo exames laboratoriais de forma acessível com resultados rápidos e precisos.',
+    discount: '10% a 25%',
+    logo: 'imagens/Caprilab/logocaprilab.png',
+    phone: '19992812385',
+    address: 'Av. de Cillo, 26 - Vila Pavan, Americana, SP',
+    city: 'Americana - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117763.37574064187!2d-47.41339533847083!3d-22.724320069114963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89b25a78cce27%3A0x4eaf176a19ae16cd!2sCaprilab%20Americana!5e0!3m2!1spt-BR!2sbr!4v1760797539402!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/caprilab/',
 }
 
 ];
