@@ -148,6 +148,20 @@ const partnersData = [
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117763.37574064187!2d-47.41339533847083!3d-22.724320069114963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89b25a78cce27%3A0x4eaf176a19ae16cd!2sCaprilab%20Americana!5e0!3m2!1spt-BR!2sbr!4v1760797539402!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     featured: false,
     instagram: 'https://www.instagram.com/caprilab/',
+},
+        {
+    id: 12,
+    name: 'Ótica Dom Pedro',
+    segment: 'Ótica',
+    description: 'Cuidamos da sua visão, fazemos exames visuais,lentes de contato, armações e óculos de sol. 30% em armações de marca própria 20% em armações de grife 10% em lentes nacionais e importados',
+    discount: 'Até 30% de desconto',
+    logo: 'imagens/OticasDomPedro/oticadompedro.png',
+    phone: '19989717369',
+    address: 'R. Dom Pedro II, 1231 - Vila Santa Catarina, Americana - SP',
+    city: 'Americana - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.3549780157473!2d-47.32355810000001!3d-22.752204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8998677803c23%3A0x4aeab3b130ca0f0a!2sR.%20Dom%20Pedro%20II%2C%201231%20-%20Vila%20Santa%20Catarina%2C%20Americana%20-%20SP%2C%2013466-000!5e0!3m2!1spt-BR!2sbr!4v1760798178254!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/oticasdompedro/',
 }
 
 ];
