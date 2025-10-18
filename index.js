@@ -162,6 +162,20 @@ const partnersData = [
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.3549780157473!2d-47.32355810000001!3d-22.752204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8998677803c23%3A0x4aeab3b130ca0f0a!2sR.%20Dom%20Pedro%20II%2C%201231%20-%20Vila%20Santa%20Catarina%2C%20Americana%20-%20SP%2C%2013466-000!5e0!3m2!1spt-BR!2sbr!4v1760798178254!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     featured: false,
     instagram: 'https://www.instagram.com/oticasdompedro/',
+},
+         {
+    id: 12,
+    name: 'Alvuz Ocupacional Soluções Ocupacionais de A a Z!',
+    segment: 'Segurança e Medicina do Trabalho',
+    description: 'A empresa Alvuz atua na área de Segurança e Medicina do Trabalho, oferecendo consultoria, assessoria, cursos, treinamentos e palestras voltados à segurança ocupacional e valorização dos colaboradores. Ela preza por tecnologia de ponta, transparência e integridade, com foco em proteger e acolher pessoas dentro do ambiente corporativo.',
+    discount: '6% de Desconto',
+    logo: 'imagens/Alvuz/logoalvuz.png',
+    phone: '19997681920',
+    address: 'R. Duque de Caxias, 35 - Vila Pavan, Americana - SP',
+    city: 'Americana - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.527378931664!2d-47.33234372545486!3d-22.74580163213589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89da9ee3c7df3%3A0x9e1e467cdda611d1!2sAlvuz%20Ocupacional%20Solu%C3%A7%C3%B5es%20Ocupacionais%20de%20A%20a%20Z*21!5e0!3m2!1spt-BR!2sbr!4v1760799822388!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/alvuzocupacional/',
 }
 
 ];
