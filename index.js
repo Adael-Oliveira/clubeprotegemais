@@ -176,6 +176,20 @@ const partnersData = [
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.527378931664!2d-47.33234372545486!3d-22.74580163213589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89da9ee3c7df3%3A0x9e1e467cdda611d1!2sAlvuz%20Ocupacional%20Solu%C3%A7%C3%B5es%20Ocupacionais%20de%20A%20a%20Z*21!5e0!3m2!1spt-BR!2sbr!4v1760799822388!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     featured: false,
     instagram: 'https://www.instagram.com/alvuzocupacional/',
+},
+         {
+    id: 14,
+    name: 'AutoVisão Vistorias Automotivas',
+    segment: 'Vistorias Veiculares',
+    description: 'Realize sua vistoria com praticidade e conveniência na Auto Visão Vistorias. Com mais de 15 anos de experiência reconhecida no mercado, garantimos um serviço de alta qualidade e confiança. Simplifique sua vida e desfrute da segurança e eficiência que só uma marca consolidada pode oferecer.',
+    discount: 'A consultar',
+    logo: 'imagens/DantasSales/DantasLogo.png',
+    phone: '19971349552',
+    address: 'Av. Brasília, 337 - Vila Fátima, Piracicaba - SP',
+    city: 'Piracicaba - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.884708945211!2d-47.6607706!3d-22.695335399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c633dc987c18ff%3A0x91b934ab630ef3!2sAv.%20Bras%C3%ADlia%2C%20337%20-%20Vila%20F%C3%A1tima%2C%20Piracicaba%20-%20SP%2C%2013412-120!5e0!3m2!1spt-BR!2sbr!4v1764818963447!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/autovisaovistoriapiracicaba/',
 }
 
 ];
