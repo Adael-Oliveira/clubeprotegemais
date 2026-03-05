@@ -190,6 +190,20 @@ const partnersData = [
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.884708945211!2d-47.6607706!3d-22.695335399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c633dc987c18ff%3A0x91b934ab630ef3!2sAv.%20Bras%C3%ADlia%2C%20337%20-%20Vila%20F%C3%A1tima%2C%20Piracicaba%20-%20SP%2C%2013412-120!5e0!3m2!1spt-BR!2sbr!4v1764818963447!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     featured: false,
     instagram: 'https://www.instagram.com/autovisaovistoriapiracicaba/',
+},
+          {
+    id: 15,
+    name: 'UP Consultas',
+    segment: 'Consulta Veicular',
+    description: 'A UP Consultas disponibiliza aos seus usuários um sistema online disponível 24 horas por dia, 7 dias por semana, para consultas veiculares completas. Por meio da plataforma, é possível consultar informações cadastrais do veículo, débitos, restrições administrativas e judiciais, registro de leilão, gravame, entre outros dados essenciais para uma compra segura.',
+    discount: '10% a 15%',
+    logo: 'imagens/UpConsultas/upconsultas.png',
+    //phone: '19991774902',
+    address: 'Rua Luiza Meneghel Mancini 96, Jardim Paulista, Americana SP (Atendimento somente online)',
+    city: 'Americana - SP',
+    //mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.884708945211!2d-47.6607706!3d-22.695335399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c633dc987c18ff%3A0x91b934ab630ef3!2sAv.%20Bras%C3%ADlia%2C%20337%20-%20Vila%20F%C3%A1tima%2C%20Piracicaba%20-%20SP%2C%2013412-120!5e0!3m2!1spt-BR!2sbr!4v1764818963447!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/upconsultas/',
 }
 
 ];
