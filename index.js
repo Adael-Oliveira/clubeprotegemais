@@ -204,6 +204,20 @@ const partnersData = [
     //mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.884708945211!2d-47.6607706!3d-22.695335399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c633dc987c18ff%3A0x91b934ab630ef3!2sAv.%20Bras%C3%ADlia%2C%20337%20-%20Vila%20F%C3%A1tima%2C%20Piracicaba%20-%20SP%2C%2013412-120!5e0!3m2!1spt-BR!2sbr!4v1764818963447!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     featured: false,
     instagram: 'https://www.instagram.com/upconsultas/',
+},
+         {
+    id: 16,
+    name: 'Jetgobe Oficina Mecânica',
+    segment: 'Mecânica Automotiva',
+    description: 'Mecânica Automotiva em Geral',
+    discount: 'Até 25%',
+    logo: 'imagens/Jetgobe/jetgobe.png',
+    phone: '19974138157',
+    address: 'R. das Rosas, 481 - Cidade Jardim II, Americana - SP, 13467-110',
+    city: 'Americana - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.9592071135644!2d-47.337856300000006!3d-22.7668951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c899e1818d41e7%3A0x37a95f3b3bed5d5a!2sJetgobe%20Oficina%20Mec%C3%A2nica!5e0!3m2!1spt-BR!2sbr!4v1772674826559!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/jetgobe.auto/',
 }
 
 ];
