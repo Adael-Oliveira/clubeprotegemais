@@ -207,18 +207,33 @@ const partnersData = [
 },
          {
     id: 16,
+    name: 'Lava Jato Getsêmani',
+    segment: 'Estética Automotiva',
+    description: 'Lava Jato Getsêmani - Lavagem de Carros e Motos'<p>'Lavagem simples - Geral com cera - Geral sem cera - Geral premium',
+    discount: '10%',
+    logo: 'imagens/getsemani/getsemani_logo.png',
+    phone: '19974138157',
+    address: 'R. das Rosas, 481 - Cidade Jardim II, Americana - SP, 13467-110',
+    city: 'Americana - SP',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.682162828675!2d-44.1413343!3d-19.9377942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6c1c8d91fc619%3A0xc2764bb8c3349ee3!2sR.%20Pirapora%2C%20486%20-%20Vila%20Cristina%2C%20Betim%20-%20MG%2C%2032675-402!5e0!3m2!1spt-BR!2sbr!4v1775871878239!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    featured: false,
+    instagram: 'https://www.instagram.com/jetgobe.auto/',
+},
+        {
+    id: 17,
     name: 'Jetgobe Oficina Mecânica',
     segment: 'Mecânica Automotiva',
     description: 'Mecânica Automotiva em Geral',
     discount: 'Até 25%',
     logo: 'imagens/Jetgobe/jetgobe.png',
-    phone: '19974138157',
-    address: 'R. das Rosas, 481 - Cidade Jardim II, Americana - SP, 13467-110',
-    city: 'Americana - SP',
+    phone: '3173143287',
+    address: 'R. Pirapora, 486 - Vila Cristina, Betim - MG, 32675-402',
+    city: 'Betim - MG',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.9592071135644!2d-47.337856300000006!3d-22.7668951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c899e1818d41e7%3A0x37a95f3b3bed5d5a!2sJetgobe%20Oficina%20Mec%C3%A2nica!5e0!3m2!1spt-BR!2sbr!4v1772674826559!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     featured: false,
-    instagram: 'https://www.instagram.com/jetgobe.auto/',
+    instagram: 'https://www.instagram.com/lavajatogetsemanibetim/',
 }
+
 
 ];
 
