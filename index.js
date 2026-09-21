@@ -3,16 +3,36 @@
 // ============================================================
 
 const cities = [
-    'Americana - SP',
-    'Santa Bárbara d\'Oeste - SP',
-    'Nova Odessa - SP',
-    'Sumaré - SP',
-    'Piracicaba - SP',
-    'Limeira - SP',
-    'Campinas - SP',
-    'Hortolândia - SP',
-    'Paulínia - SP',
-    'Betim - MG'
+  'Americana - SP',
+  'Sumaré - SP',
+  'Piracicaba - SP',
+  'Limeira - SP',
+  'Sorocaba e região - SP',
+  'Indaiatuba - SP',
+  'Jundiaí - SP',
+  'Itupeva - SP',
+  'Santa Bárbara d\'Oeste - SP',
+  'Barueri - SP',
+  'Osasco - SP',
+  'Alphaville - SP',
+  'Carapicuíba - SP',
+  'Antônio Carlos - SC',
+  'Cachoeiro de Itapemirim - ES',
+  'Rio Grande do Sul - RS',
+  'Paraná - PR',
+  'Curitiba - PR',
+  'Amparo - SP',
+  'Pedreira - SP',
+  'Serra Negra - SP',
+  'Bragança Paulista - SP',
+  'Mogi Mirim - SP',
+  'Mogi Guaçu - SP',
+  'Campinas - SP',
+  'Hortolândia - SP',
+  'Valinhos - SP',
+  'São Bernardo do Campo - SP',
+  'Zona Leste de SP - SP',
+  'Zona Sul de SP - SP'
 ];
 
 
