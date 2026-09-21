@@ -1255,6 +1255,13 @@
 
     const provider = new GoogleAuthProvider();
 
+    // ========================================================
+// ADMINISTRADOR AUTORIZADO
+// ========================================================
+
+const ADMIN_EMAIL = "adaeloliveira.ao@gmail.com";
+const ADMIN_UID = "Vu86ab5XaDPxYLHF601D9tIvssh2";
+
 
     // ========================================================
     // ELEMENTOS
@@ -1322,31 +1329,74 @@
 
 
     // ========================================================
-    // LOGIN
-    // ========================================================
+// LOGIN
+// ========================================================
 
-    loginBtn.addEventListener("click", async () => {
+loginBtn.addEventListener("click", async () => {
 
-        try {
+    try {
 
-            loginStatus.textContent =
-                "Abrindo login...";
+        loginStatus.textContent =
+            "Abrindo login...";
 
-            await signInWithPopup(
-                auth,
-                provider
+        const result = await signInWithPopup(
+            auth,
+            provider
+        );
+
+        const user = result.user;
+
+        console.log("Usuário autenticado:", user.email);
+        console.log("UID:", user.uid);
+
+        // ====================================================
+        // VERIFICAÇÃO DO ADMINISTRADOR
+        // ====================================================
+
+        const autorizado =
+            user.email === ADMIN_EMAIL &&
+            user.uid === ADMIN_UID;
+
+        if (!autorizado) {
+
+            console.warn(
+                "Tentativa de acesso não autorizado:",
+                user.email,
+                user.uid
             );
 
-        } catch (error) {
+            alert("Acesso não autorizado.");
 
-            console.error(error);
+            await signOut(auth);
 
             loginStatus.textContent =
-                "Erro no login: " + error.message;
+                "Acesso não autorizado.";
 
+            return;
         }
 
-    });
+        // ====================================================
+        // ACESSO AUTORIZADO
+        // ====================================================
+
+        loginStatus.textContent =
+            "Login realizado com sucesso!";
+
+        console.log(
+            "✅ Administrador autorizado:",
+            user.email
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        loginStatus.textContent =
+            "Erro no login: " + error.message;
+
+    }
+
+});
 
 
     // ========================================================
