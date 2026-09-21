@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administração | ProtegeMais Parceiros</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(0,0,0,.08);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        button {
+            width: 100%;
+            border: 0;
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #111827;
+            color: white;
+        }
+
+        button:hover {
+            opacity: .9;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            word-break: break-word;
+        }
+
+        .user {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .uid {
+            font-size: 12px;
+            margin-top: 10px;
+            word-break: break-all;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="logo">ProtegeMais</div>
+
+    <div class="subtitle">
+        Painel administrativo de parceiros
+    </div>
+
+    <button id="loginBtn">
+        Entrar com Google
+    </button>
+
+    <div id="status">
+        Aguardando login...
+    </div>
+
+    <div class="user" id="userBox">
+        <strong>Usuário autenticado</strong>
+
+        <div id="userName"></div>
+        <div id="userEmail"></div>
+
+        <div class="uid">
+            UID: <span id="userUid"></span>
+        </div>
+    </div>
+
+</div>
+
+<script type="module">
+
+    import { initializeApp } from
+        "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+        getAuth,
+        GoogleAuthProvider,
+        signInWithPopup,
+        onAuthStateChanged,
+        signOut
+    } from
+        "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+    // CONFIGURAÇÃO DO FIREBASE
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyDiTMMiV1-NF9qrWb4XDXE9ZcazThq12CQ",
+
+        authDomain: "protegemais-parceiros.firebaseapp.com",
+
+        projectId: "protegemais-parceiros",
+
+        storageBucket: "protegemais-parceiros.firebasestorage.app",
+
+        messagingSenderId: "836148089634",
+
+        appId: "1:836148089634:web:cfc7598a6323a3ce744b7b"
+
+    };
+
+
+    // INICIALIZA FIREBASE
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const provider = new GoogleAuthProvider();
+
+
+    const loginBtn = document.getElementById("loginBtn");
+    const status = document.getElementById("status");
+
+    const userBox = document.getElementById("userBox");
+
+    const userName = document.getElementById("userName");
+    const userEmail = document.getElementById("userEmail");
+    const userUid = document.getElementById("userUid");
+
+
+    // LOGIN GOOGLE
+    loginBtn.addEventListener("click", async () => {
+
+        try {
+
+            status.textContent = "Abrindo login do Google...";
+
+            const result = await signInWithPopup(auth, provider);
+
+            const user = result.user;
+
+            console.log("USUÁRIO:", user);
+
+            console.log("UID:", user.uid);
+
+            status.textContent = "Login realizado com sucesso.";
+
+        } catch (error) {
+
+            console.error(error);
+
+            status.textContent =
+                "Erro no login: " + error.message;
+
+        }
+
+    });
+
+
+    // VERIFICA LOGIN
+    onAuthStateChanged(auth, (user) => {
+
+        if (user) {
+
+            console.log("================================");
+            console.log("USUÁRIO LOGADO");
+            console.log("Nome:", user.displayName);
+            console.log("Email:", user.email);
+            console.log("UID:", user.uid);
+            console.log("================================");
+
+            userName.textContent =
+                "Nome: " + (user.displayName || "Não informado");
+
+            userEmail.textContent =
+                "E-mail: " + user.email;
+
+            userUid.textContent =
+                user.uid;
+
+            userBox.style.display = "block";
+
+            loginBtn.textContent = "Login realizado";
+
+            loginBtn.disabled = true;
+
+            status.textContent =
+                "Sua conta está autenticada no Firebase.";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
