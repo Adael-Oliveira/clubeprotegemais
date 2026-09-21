@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Migração de Parceiros - ProtegeMais</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .status-box {
+            padding: 15px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            margin-bottom: 20px;
+        }
+
+        .status-ok {
+            color: #137333;
+            font-weight: bold;
+        }
+
+        .status-error {
+            color: #c5221f;
+            font-weight: bold;
+        }
+
+        .info {
+            background: #eef5ff;
+            border-left: 4px solid #1976d2;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .warning {
+            background: #fff8e1;
+            border-left: 4px solid #f9a825;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        button {
+            border: 0;
+            border-radius: 8px;
+            padding: 14px 22px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            background: #1976d2;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background: #125aa0;
+        }
+
+        button:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        #login-button {
+            background: #4285f4;
+        }
+
+        #status-log {
+            margin-top: 25px;
+            background: #111;
+            color: #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 220px;
+            max-height: 500px;
+            overflow-y: auto;
+            white-space: pre-line;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .progress {
+            margin-top: 20px;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #1976d2;
+            transition: width .3s ease;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result.success {
+            background: #e8f5e9;
+            color: #1b5e20;
+        }
+
+        .result.error {
+            background: #ffebee;
+            color: #b71c1c;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🔄 Migração de Parceiros</h1>
+
+        <div class="subtitle">
+            Clube de Benefícios ProtegeMais
+        </div>
+
+
+        <!-- STATUS LOGIN -->
+
+        <div class="status-box">
+
+            <strong>Autenticação:</strong>
+
+            <span id="auth-status">
+                Verificando...
+            </span>
+
+        </div>
+
+
+        <!-- INFORMAÇÃO -->
+
+        <div class="info">
+
+            <strong>Esta ferramenta irá:</strong>
+
+            <ul>
+
+                <li>
+                    Importar os 17 parceiros do seu antigo
+                    <code>index.js</code>.
+                </li>
+
+                <li>
+                    Manter todos os dados originais.
+                </li>
+
+                <li>
+                    Criar os documentos dentro de
+                    <code>partners</code>.
+                </li>
+
+                <li>
+                    Utilizar IDs fixos de
+                    <code>legacy-1</code> até
+                    <code>legacy-17</code>.
+                </li>
+
+                <li>
+                    Se executar novamente, os mesmos documentos
+                    serão atualizados e não duplicados.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- AVISO -->
+
+        <div class="warning">
+
+            <strong>⚠️ Atenção</strong>
+
+            <p>
+
+                Execute a migração apenas depois de estar
+                autenticado com a conta Google que possui
+                permissão de administrador no Firebase.
+
+            </p>
+
+        </div>
+
+
+        <!-- BOTÕES -->
+
+        <div>
+
+            <button
+                id="login-button"
+                style="display:none;"
+            >
+                🔐 Entrar com Google
+            </button>
+
+
+            <button
+                id="migrate-button"
+                style="display:none;"
+            >
+                🚀 Migrar 17 Parceiros
+            </button>
+
+        </div>
+
+
+        <!-- PROGRESSO -->
+
+        <div
+            id="progress"
+            class="progress"
+        >
+
+            <div
+                id="progress-bar"
+                class="progress-bar"
+            ></div>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+
+        <div
+            id="result"
+            class="result"
+        ></div>
+
+
+        <!-- LOG -->
+
+        <div id="status-log">
+
+Aguardando autenticação...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="module">
+
+// ============================================================
+// FIREBASE APP
+// ============================================================
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+// ============================================================
+// FIREBASE AUTH
+// ============================================================
+
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+// ============================================================
+// FIRESTORE
+// ============================================================
+
+import {
+    getFirestore,
+    doc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+// ============================================================
+// CONFIGURAÇÃO
+// ============================================================
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyDiTMMiV1-NF9qrWb4XDXE9ZcazThq12CQ",
+
+    authDomain:
+        "protegemais-parceiros.firebaseapp.com",
+
+    projectId:
+        "protegemais-parceiros",
+
+    storageBucket:
+        "protegemais-parceiros.firebasestorage.app",
+
+    messagingSenderId:
+        "836148089634",
+
+    appId:
+        "1:836148089634:web:cfc7598a6323a3ce744b7b"
+
+};
+
+
+// ============================================================
+// INICIALIZAÇÃO
+// ============================================================
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+const provider =
+    new GoogleAuthProvider();
+
+
+// ============================================================
+// ELEMENTOS
+// ============================================================
+
+const authStatus =
+    document.getElementById(
+        "auth-status"
+    );
+
+
+const loginButton =
+    document.getElementById(
+        "login-button"
+    );
+
+
+const migrateButton =
+    document.getElementById(
+        "migrate-button"
+    );
+
+
+const statusLog =
+    document.getElementById(
+        "status-log"
+    );
+
+
+const progress =
+    document.getElementById(
+        "progress"
+    );
+
+
+const progressBar =
+    document.getElementById(
+        "progress-bar"
+    );
+
+
+const result =
+    document.getElementById(
+        "result"
+    );
+
+
+// ============================================================
+// FUNÇÃO DE LOG
+// ============================================================
+
+function log(message) {
+
+    statusLog.textContent +=
+        "\n" + message;
+
+    statusLog.scrollTop =
+        statusLog.scrollHeight;
+
+}
+
+
+// ============================================================
+// OS 17 PARCEIROS ORIGINAIS
+// ============================================================
+
+const partnersData = [
+
+    {
+        id: 1,
+
+        name:
+            'Nicped Viagens e Turismo',
+
+        segment:
+            'Viagem & Turismo',
+
+        description:
+            'Passagem Aérea, Cruzeiros, Pacotes de Viagens para os destinos mais incríveis do Brasil e do Mundo.',
+
+        discount:
+            '10% para Associados ProtegeMais',
+
+        logo:
+            'imagens/Nicped Viagens e Turismo/logoNicped.png',
+
+        banner:
+            'imagens/Nicped Viagens e Turismo/capaNicped.png',
+
+        phone:
+            '19920069671',
+
+        address:
+            'Av. Affonso Pansan, nº 175, Vila Bertini/Americana – SP/ CEP 13.473-620',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.0321524627584!2d-47.299064927488594!3d-22.72704628588198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89a085d0b6623%3A0xb44a064ff7a95b3f!2sAv.%20Afonso%20Pansan%2C%20175%20-%20Vila%20Bertini%2C%20Americana%20-%20SP%2C%2013473-620!5e0!3m2!1spt-BR!2sbr!4v1753491828711!5m2!1spt-BR!2sbr',
+
+        featured:
+            true
+    },
+
+
+    {
+        id: 2,
+
+        name:
+            'DevPage',
+
+        segment:
+            'Tecnologia',
+
+        description:
+            'DevPage é especializada em criação de sites/landing page sob demanda',
+
+        discount:
+            '10% em serviços',
+
+        logo:
+            'imagens/DevPage/logodevpage.png',
+
+        banner:
+            'imagens/DevPage/bannerdevpage.png',
+
+        phone:
+            '18981167681',
+
+        address:
+            'R. Itália - Jd. Paulistano, Americana - SP',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.0910778763573!2d-47.3342872!3d-22.724855899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89bb3ac0c4d87%3A0x4da0bbb69bb3b68d!2sR.%20It%C3%A1lia%2C%20351%20-%20Jardim%20Paulistano%2C%20Americana%20-%20SP%2C%2013471-550!5e0!3m2!1spt-BR!2sbr!4v1753745559290!5m2!1spt-BR!2sbr',
+
+        featured:
+            true,
+
+        instagram:
+            'https://www.instagram.com/devpage.studio'
+    },
+
+
+    {
+        id: 3,
+
+        name:
+            'Programa TopRebolças',
+
+        segment:
+            'Comunicação & Mídia',
+
+        description:
+            'Planos de Anúncios em Portal de Notícias e Programas de Rádio',
+
+        discount:
+            '10% nos Planos de Anúncios',
+
+        logo:
+            'imagens/toprebolcas/logotoprebolcas.png',
+
+        banner:
+            'imagens/toprebolcas/bannertoprebolcas.png',
+
+        phone:
+            '19998603454',
+
+        address:
+            'Rua José Maria Barroca, 540 - Centro, Sumaré - SP',
+
+        city:
+            'Sumaré - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.5315793004606!2d-47.27554982545197!3d-22.819814534767033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8bd427f17c407%3A0x18fedf3a594070f5!2sR.%20Jos%C3%A9%20Maria%20Barroca%2C%20540%20-%20Centro%2C%20Sumar%C3%A9%20-%20SP%2C%2013170-022!5e0!3m2!1spt-BR!2sbr!4v1753746219284!5m2!1spt-BR!2sbr',
+
+        featured:
+            true
+    },
+
+
+    {
+        id: 4,
+
+        name:
+            'Alcântara Cabeleireiro',
+
+        segment:
+            'Beleza & Estética',
+
+        description:
+            'Corte de cabelos masculinos adulto e criança',
+
+        discount:
+            '10% de desconto os cortes Masculinos',
+
+        logo:
+            'imagens/AlcantaraCabeleireiro/logoAlcantara.png',
+
+        phone:
+            '19987190798',
+
+        address:
+            'Av. Carlos Botelho, 1696 - Santa Rosa, Nova Odessa - SP, 13385-060',
+
+        city:
+            'Nova Odessa - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.3657666119484!2d-47.28942382545311!3d-22.788906933667228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8978c0fe0d6fb%3A0x9fd555b5eb3107b6!2sAlc%C3%A2ntara%20Cabeleireiro!5e0!3m2!1spt-BR!2sbr!4v1754143067819!5m2!1spt-BR!2sbr',
+
+        featured:
+            false
+    },
+
+
+    {
+        id: 5,
+
+        name:
+            'Araujo Guincho Piracicaba',
+
+        segment:
+            'Transporte & Logística',
+
+        description:
+            'GUINCHO 24 HORAS Araújo Guincho é a sua solução confiável para todos os problemas de Guincho em Piracicaba e REGIÃO. Oferecemos uma variedade de serviços, incluindo Troca de Pneus, Reboque, Chaveiro e muito mais',
+
+        discount:
+            '5% em serviços',
+
+        logo:
+            'imagens/AraujoGuincho/logoAraujo.png',
+
+        phone:
+            '19998979810',
+
+        address:
+            'R. das Opalas - Piracicaba SP',
+
+        city:
+            'Piracicaba - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.039089756494!2d-47.66106521581734!3d-22.681619782047857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c633b926e250f1%3A0x7151f4f42c24112!2sR.%20das%20Opalas%20-%20M%C3%A1rio%20Dedini%2C%20Piracicaba%20-%20SP%2C%2013412-302!5e0!3m2!1spt-BR!2sbr!4v1754144042934!5m2!1spt-BR!2sbr',
+
+        featured:
+            false
+    },
+
+
+    {
+        id: 6,
+
+        name:
+            'Digo Guinchos 24h',
+
+        segment:
+            'Transporte & Logística',
+
+        description:
+            'Será oferecio um trabalho com rapidez, qualidade e um desconto de 10% em parceria com a ProtegeMais',
+
+        discount:
+            '10% nos serviços',
+
+        logo:
+            'imagens/DigoGuinchos/logoDigo.png',
+
+        phone:
+            '19992248323',
+
+        address:
+            'R. Thomaz Panaro, 615 - Jardim Brasil, Americana - SP, 13474-080',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.253012920407!2d-43.1843236845013!3d-22.90394334356779!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f7e9c5a0b9b%3A0x2d174a7b9a5b9c5c!2sAv.%20Copacabana%2C%20700%2C%20Rio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1620000000003!5m2!1spt-BR!2sbr',
+
+        featured:
+            true
+    },
+
+
+    {
+        id: 7,
+
+        name:
+            'ITA Guincho Piracicaba',
+
+        segment:
+            'Transporte & Logística',
+
+        description:
+            'Guincho 24h - Troca de Pneu = Patins - Aulixio Pane Seca',
+
+        discount:
+            'A consultar',
+
+        logo:
+            'imagens/ITAGuinchos/logoITA.png',
+
+        phone:
+            '19997981020',
+
+        address:
+            'R. Urbâno Gobete, 95 - Piracicaba SP',
+
+        city:
+            'Piracicaba - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5938107199427!2d-47.67618972545489!3d-22.7433341320484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c6312646da145f%3A0xb758779bfba3cf8f!2sR.%20Urb%C3%A2no%20Gobete%20-%20Piracicaba%2C%20SP%2C%2013402-292!5e0!3m2!1spt-BR!2sbr!4v1754145331172!5m2!1spt-BR!2sbr',
+
+        featured:
+            false
+    },
+
+
+    {
+        id: 8,
+
+        name:
+            'Javé jirê • Lava Jato',
+
+        segment:
+            'Estética Automotiva',
+
+        description:
+            'Guincho 24h - Troca de Pneu - Patins - Aulixio Pane Seca',
+
+        discount:
+            '10% nos serviços',
+
+        logo:
+            'imagens/JaveJire/logoJave.png',
+
+        phone:
+            '19997981020',
+
+        address:
+            'R. Luxemburgo, 200 - Vila Santa Maria, Americana - SP, 13471-780',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9756657699436!2d-47.34872122545539!3d-22.72914583154492!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89bbb88063b77%3A0xb1f3d2aa440cf222!2sR.%20Luxemburgo%2C%20200%20-%20Vila%20Santa%20Maria%2C%20Americana%20-%20SP%2C%2013471-780!5e0!3m2!1spt-BR!2sbr!4v1754146062507!5m2!1spt-BR!2sbr',
+
+        featured:
+            false
+    },
+
+
+    {
+        id: 9,
+
+        name:
+            'MusicalTeclados - Assistência Técnica',
+
+        segment:
+            'Assistência Técnica',
+
+        description:
+            'Assistência Técnica em Teclados e Pianos Digitais de todas marcas e modelos.',
+
+        discount:
+            '10% nos serviços',
+
+        logo:
+            'imagens/MusicalTeclados/logoMusical.png',
+
+        phone:
+            '19920014106',
+
+        address:
+            'Av. da Saudade, 225 - Vila Cordenonsi, Americana - SP, 13472-520',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.859548519968!2d-47.32602929999999!3d-22.7334612!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89904d8c36dcb%3A0x1fb893a3ab151ffb!2sMusical%20Teclados%20-%20Assist%C3%AAncia%20T%C3%A9cnica!5e0!3m2!1spt-BR!2sbr!5m2!1spt-BR!2sbr',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/musicalteclados'
+    },
+
+
+    {
+        id: 10,
+
+        name:
+            'Sopro Limpo - Estética Automotiva',
+
+        segment:
+            'Estética Automotiva',
+
+        description:
+            'Sopro Limpo – Especialistas em estética automotiva! Funilaria, pintura, martelinho de ouro, polimento, higienização de bancos e vitrificação para deixar seu carro impecável, por dentro e por fora.',
+
+        discount:
+            '5% nos serviços',
+
+        logo:
+            'imagens/SoproLimpo/logoSoproLimpo.png',
+
+        phone:
+            '19922250828',
+
+        address:
+            'R. Jaír Formigari, 410 - Jardim Santa Fe, Limeira - SP, 13482-364',
+
+        city:
+            'Limeira - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.333151787291!2d-47.421087!3d-22.566639799999997!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c880684142a033%3A0x6528f3353f908ff7!2sR.%20Ja%C3%ADr%20Formigari%2C%20410%20-%20Jardim%20Santa%20Fe%2C%20Limeira%20-%20SP%2C%2013482-364!5e0!3m2!1spt-BR!2sbr!4v1754686463325!5m2!1spt-BR!2sbr',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/soprolimpo/'
+    },
+
+
+    {
+        id: 11,
+
+        name:
+            'Caprilab - Exames Laboratoriais com Precisão e Qualidade',
+
+        segment:
+            'Laboratório Clínico',
+
+        description:
+            'Somos um laboratório de análise clínicas que usa da tecnologia em favor da vida! Estamos localizados em Santa Barbara D’Oeste e Americana com laboratórios de alta qualidade oferecendo exames laboratoriais de forma acessível com resultados rápidos e precisos.',
+
+        discount:
+            '10% a 25%',
+
+        logo:
+            'imagens/Caprilab/logocaprilab.png',
+
+        phone:
+            '19992812385',
+
+        address:
+            'Av. de Cillo, 26 - Vila Pavan, Americana, SP',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117763.37574064187!2d-47.41339533847083!3d-22.724320069114963!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89b25a78cce27%3A0x4eaf176a19ae16cd!2sCaprilab%20Americana!5e0!3m2!1spt-BR!2sbr!4v1760797539402!5m2!1spt-BR!2sbr',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/caprilab/'
+    },
+
+
+    {
+        id: 12,
+
+        name:
+            'Ótica Dom Pedro',
+
+        segment:
+            'Ótica',
+
+        description:
+            'Cuidamos da sua visão, fazemos exames visuais,lentes de contato, armações e óculos de sol. 30% em armações de marca própria 20% em armações de grife 10% em lentes nacionais e importados',
+
+        discount:
+            'Até 30% de desconto',
+
+        logo:
+            'imagens/OticasDomPedro/oticadompedro.png',
+
+        phone:
+            '19989717369',
+
+        address:
+            'R. Dom Pedro II, 1231 - Vila Santa Catarina, Americana - SP',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.3549780157473!2d-47.32355810000001!3d-22.752204!2m3!1f0!2f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8998677803c23%3A0x4aeab3b130ca0f0a!2sR.%20Dom%20Pedro%20II%2C%201231%20-%20Vila%20Santa%20Catarina%2C%20Americana%20-%20SP%2C%2013466-000!5e0!3m2!1spt-BR!2sbr!4v1760798178254!5m2!1spt-BR!2sbr',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/oticasdompedro/'
+    },
+
+
+    {
+        id: 13,
+
+        name:
+            'Alvuz Ocupacional Soluções Ocupacionais de A a Z!',
+
+        segment:
+            'Segurança e Medicina do Trabalho',
+
+        description:
+            'A empresa Alvuz atua na área de Segurança e Medicina do Trabalho, oferecendo consultoria, assessoria, cursos, treinamentos e palestras voltados à segurança ocupacional e valorização dos colaboradores. Ela preza por tecnologia de ponta, transparência e integridade, com foco em proteger e acolher pessoas dentro do ambiente corporativo.',
+
+        discount:
+            '6% de Desconto',
+
+        logo:
+            'imagens/alvuz/logoalvuz.png',
+
+        phone:
+            '19997681920',
+
+        address:
+            'R. Duque de Caxias, 35 - Vila Pavan, Americana - SP',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.527378931664!2d-47.33234372545486!3d-22.74580163213589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89da9ee3c7df3%3A0x9e1e467cdda611d1!2sAlvuz%20Ocupacional%20Solu%C3%A7%C3%B5es%20Ocupacionais%20de%20A%20a%20Z*21!5e0!3m2!1spt-BR!2sbr!4v1760799822388!5m2!1spt-BR!2sbr',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/alvuzocupacional/'
+    },
+
+
+    {
+        id: 14,
+
+        name:
+            'AutoVisão Vistorias Automotivas',
+
+        segment:
+            'Vistorias Veiculares',
+
+        description:
+            'Realize sua vistoria com praticidade e conveniência na Auto Visão Vistorias. Com mais de 15 anos de experiência reconhecida no mercado, garantimos um serviço de alta qualidade e confiança. Simplifique sua vida e desfrute da segurança e eficiência que só uma marca consolidada pode oferecer.',
+
+        discount:
+            'A consultar',
+
+        logo:
+            'imagens/DantasSales/DantasLogo.png',
+
+        phone:
+            '19971349552',
+
+        address:
+            'Av. Brasília, 337 - Vila Fátima, Piracicaba - SP',
+
+        city:
+            'Piracicaba - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.884708945211!2d-47.6607706!3d-22.695335399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c633dc987c18ff%3A0x91b934ab630ef3!2sAv.%20Bras%C3%ADlia%2C%20337%20-%20Vila%20F%C3%A1tima%2C%20Piracicaba%20-%20SP%2C%2013412-120!5e0!3m2!1spt-BR!2sbr!4v1764818963447!5m2!1spt-BR!2sbr',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/autovisaovistoriapiracicaba/'
+    },
+
+
+    {
+        id: 15,
+
+        name:
+            'UP Consultas',
+
+        segment:
+            'Consulta Veicular',
+
+        description:
+            'A UP Consultas disponibiliza aos seus usuários um sistema online disponível 24 horas por dia, 7 dias por semana, para consultas veiculares completas. Por meio da plataforma, é possível consultar informações cadastrais do veículo, débitos, restrições administrativas e judiciais, registro de leilão, gravame, entre outros dados essenciais para uma compra segura.',
+
+        discount:
+            '10% a 15%',
+
+        logo:
+            'imagens/UpConsultas/upconsultas.png',
+
+        address:
+            'Rua Luiza Meneghel Mancini 96, Jardim Paulista, Americana SP (Atendimento somente online)',
+
+        city:
+            'Americana - SP',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/upconsultas/'
+    },
+
+
+    {
+        id: 16,
+
+        name:
+            'Jetgobe Oficina Mecânica',
+
+        segment:
+            'Mecânica Automotiva',
+
+        description:
+            'Mecânica Automotiva em Geral',
+
+        discount:
+            'Até 25%',
+
+        logo:
+            'imagens/Jetgobe/jetgobe.png',
+
+        phone:
+            '19974138157',
+
+        address:
+            'R. das Rosas, 481 - Cidade Jardim II, Americana - SP, 13467-110',
+
+        city:
+            'Americana - SP',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14715.83683923335!2d-47.337856!3d-22.766895!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c899e1818d41e7%3A0x37a95f3b3bed5d5a!2sJetgobe%20Oficina%20Mec%C3%A2nica!5e0!3m2!1spt-BR!2sus!4v1775873431358!5m2!1spt-BR!2sus',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/jetgobe.auto/'
+    },
+
+
+    {
+        id: 17,
+
+        name:
+            'Lava Jato Getsêmani',
+
+        segment:
+            'Estética Automotiva',
+
+        description:
+            'Lava Jato Getsêmani - Lavagem de Carros e Motos: Lavagem simples - Geral com cera - Geral sem cera - Geral premium',
+
+        discount:
+            '10%',
+
+        logo:
+            'imagens/getsemani/getsemani_logo.png',
+
+        phone:
+            '3173143287',
+
+        address:
+            'R. Pirapora, 486 - Vila Cristina, Betim - MG, 32675-402',
+
+        city:
+            'Betim - MG',
+
+        mapEmbedUrl:
+            'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15002.728670311237!2d-44.141334!3d-19.937794!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6c1c8d91fc619%3A0xc2764bb8c3349ee3!2sR.%20Pirapora%2C%20486%20-%20Vila%20Cristina%2C%20Betim%20-%20MG%2C%2032675-402%2C%20Brasil!5e0!3m2!1spt-BR!2sus!4v1775873482949!5m2!1spt-BR!2sus',
+
+        featured:
+            false,
+
+        instagram:
+            'https://www.instagram.com/lavajatogetsemanibetim/'
+    }
+
+];
+
+
+// ============================================================
+// AUTENTICAÇÃO
+// ============================================================
+
+loginButton.addEventListener(
+    "click",
+    async () => {
+
+        try {
+
+            await signInWithPopup(
+                auth,
+                provider
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            authStatus.textContent =
+                "Erro no login";
+
+            authStatus.className =
+                "status-error";
+
+            log(
+                "❌ Erro no login: " +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+// ============================================================
+// VERIFICAR USUÁRIO
+// ============================================================
+
+onAuthStateChanged(
+    auth,
+    user => {
+
+        if (user) {
+
+            authStatus.textContent =
+                `Logado como: ${user.email}`;
+
+            authStatus.className =
+                "status-ok";
+
+
+            loginButton.style.display =
+                "none";
+
+
+            migrateButton.style.display =
+                "inline-block";
+
+
+            statusLog.textContent =
+
+                "✅ Usuário autenticado.\n\n" +
+
+                `Conta: ${user.email}\n\n` +
+
+                "Pronto para migrar os 17 parceiros.";
+
+        } else {
+
+            authStatus.textContent =
+                "Não autenticado";
+
+            authStatus.className =
+                "status-error";
+
+
+            loginButton.style.display =
+                "inline-block";
+
+
+            migrateButton.style.display =
+                "none";
+
+
+            statusLog.textContent =
+                "🔐 Faça login com sua conta Google para continuar.";
+
+        }
+
+    }
+);
+
+
+// ============================================================
+// EXECUTAR MIGRAÇÃO
+// ============================================================
+
+migrateButton.addEventListener(
+    "click",
+    async () => {
+
+        const confirmacao = confirm(
+
+            "ATENÇÃO\n\n" +
+
+            "Serão migrados os 17 parceiros do antigo index.js.\n\n" +
+
+            "Os documentos serão gravados como:\n" +
+
+            "legacy-1 até legacy-17\n\n" +
+
+            "Executar a migração?"
+
+        );
+
+
+        if (!confirmacao) {
+
+            return;
+
+        }
+
+
+        migrateButton.disabled =
+            true;
+
+
+        progress.style.display =
+            "block";
+
+
+        result.style.display =
+            "none";
+
+
+        result.className =
+            "result";
+
+
+        statusLog.textContent =
+            "🚀 Iniciando migração...\n";
+
+
+        let sucessos =
+            0;
+
+
+        let erros =
+            0;
+
+
+        // ====================================================
+        // MIGRAR UM POR UM
+        // ====================================================
+
+        for (
+            let index = 0;
+            index < partnersData.length;
+            index++
+        ) {
+
+
+            const partner =
+                partnersData[index];
+
+
+            const documentId =
+                `legacy-${partner.id}`;
+
+
+            try {
+
+
+                await setDoc(
+
+                    doc(
+                        db,
+                        "partners",
+                        documentId
+                    ),
+
+                    {
+
+                        ...partner,
+
+                        legacyId:
+                            partner.id,
+
+                        migratedFrom:
+                            "index.js",
+
+                        migratedAt:
+                            new Date()
+
+                    },
+
+                    {
+
+                        merge:
+                            true
+
+                    }
+
+                );
+
+
+                sucessos++;
+
+
+                const percent =
+                    Math.round(
+                        ((index + 1) /
+                        partnersData.length) *
+                        100
+                    );
+
+
+                progressBar.style.width =
+                    `${percent}%`;
+
+
+                log(
+                    `✅ ${index + 1}/17 — ${partner.name}`
+                );
+
+
+            } catch (error) {
+
+                erros++;
+
+
+                console.error(
+                    partner.name,
+                    error
+                );
+
+
+                log(
+                    `❌ ${index + 1}/17 — ${partner.name}`
+                );
+
+
+                log(
+                    `   Erro: ${error.message}`
+                );
+
+            }
+
+        }
+
+
+        // ====================================================
+        // RESULTADO
+        // ====================================================
+
+        log("");
+        log("==========================================");
+        log("MIGRAÇÃO FINALIZADA");
+        log("==========================================");
+        log(`✅ Sucesso: ${sucessos}`);
+        log(`❌ Erros: ${erros}`);
+
+
+        result.style.display =
+            "block";
+
+
+        if (erros === 0) {
+
+            result.className =
+                "result success";
+
+
+            result.innerHTML = `
+
+                <strong>🎉 Migração concluída!</strong>
+
+                <p>
+                    Os ${sucessos} parceiros foram
+                    gravados no Firestore.
+                </p>
+
+                <p>
+                    Agora o site público poderá
+                    carregá-los diretamente da coleção
+                    <code>partners</code>.
+                </p>
+
+            `;
+
+
+        } else {
+
+            result.className =
+                "result error";
+
+
+            result.innerHTML = `
+
+                <strong>⚠️ Migração concluída com erros.</strong>
+
+                <p>
+                    Sucesso: ${sucessos}
+                </p>
+
+                <p>
+                    Erros: ${erros}
+                </p>
+
+                <p>
+                    Consulte o log acima.
+                </p>
+
+            `;
+
+        }
+
+
+        migrateButton.disabled =
+            false;
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
